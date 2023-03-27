@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100vw;
+    font-size: 30px;
+    color: white;
+}
+
+body {
+    background-image: url(/space\ background.jpeg);
+    background-size: cover;
+}
+
+header {
+    text-align: center;
+    margin-top: 10px;
+}
+
+header h1 {
+    font-size: 50px;
+    font-family: 'Russo One', sans-serif;
+    letter-spacing: 10px;
+    text-shadow: 5px 5px 2px purple;
+}
+
+input {
+    width: 200px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+button#start {
+    width: 150px;
+    font-size: 20px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    color: black;
+
+}
+
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-evenly;
+    width: 600px;
+    margin-top: 10px;
+}
+
+.cell {
+    border: 2px solid white;
+    width: 200px;
+    height: 190px;
+    text-align: center;
+    font-size: 150px;
+}
+
+
+
+
+@media screen and (max-width: 650px) {
+    #board {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content:space-evenly;
+        width: 95vw;
+        margin-top: 30px;
+    }
+
+    .cell {
+        border: 2px solid white;
+        width: 90px;
+        height: 125px;
+        font-size: 75px;
+        margin: 0 auto;
+    }
+}
