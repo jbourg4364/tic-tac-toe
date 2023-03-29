@@ -13,27 +13,28 @@
 <body>
     <!-- Header -->
     <header>
-        <h1>GALAXY</h1>
-        <h2>Tic-Tac-Toe</h2>
+        <h1 id="banner">GALAXY</h1>
+        <h2>☆  Tic - Tac - Toe  ☆</h2>
     </header>
 
     <!-- User Input -->
-    <div id="name-container">
-        <input id="player-one" placeholder="What is your name?">
+    <div class="name-container">
+        <input id="player-one" placeholder="Martian 1">
+        <input id="player-two" placeholder="Martian 2">
     </div>
-    <button id="start">Start Game</button>
+    <input id="start-button" type="button" name="Start" onclick="renderGame()" value="Start Game"/>
 
     <!-- Board -->
     <div id="board">
-        <div id="posOne" class="cell"></div>
-        <div id="posTwo" class="cell"></div>
-        <div id="posThree" class="cell"></div>
-        <div id="posFour" class="cell"></div>
-        <div id="posFive" class="cell"></div>
-        <div id="posSix" class="cell"></div>
-        <div id="posSeven" class="cell"></div>
-        <div id="posEight" class="cell"></div>
-        <div id="posNine" class="cell"></div>
+        <div id="one" class="cell"></div>
+        <div id="two" class="cell"></div>
+        <div id="three" class="cell"></div>
+        <div id="four" class="cell"></div>
+        <div id="five" class="cell"></div>
+        <div id="six" class="cell"></div>
+        <div id="seven" class="cell"></div>
+        <div id="eight" class="cell"></div>
+        <div id="nine" class="cell"></div>
     </div>
 <script src="app.js"></script>
 </body>

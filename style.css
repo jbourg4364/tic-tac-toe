@@ -19,24 +19,36 @@ header {
 header h1 {
     font-size: 50px;
     font-family: 'Russo One', sans-serif;
-    letter-spacing: 10px;
+    letter-spacing: 20px;
     text-shadow: 5px 5px 2px purple;
 }
 
-input {
+.name-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: space-around;
+
+}
+#player-one, #player-two {
     width: 200px;
-    margin-left: 50%;
-    transform: translate(-50%);
-    margin-top: 10px;
+    height: 35px;
+    text-align: center;
+    color: purple;
     font-size: 20px;
+
 }
 
-button#start {
+#start-button {
     width: 150px;
     font-size: 20px;
     margin-left: 50%;
     transform: translate(-50%);
     color: black;
+    height: 30px;
+    text-align: center;
 
 }
 
@@ -46,7 +58,7 @@ button#start {
     flex-direction: row;
     justify-content:space-evenly;
     width: 600px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .cell {
@@ -54,7 +66,9 @@ button#start {
     width: 200px;
     height: 190px;
     text-align: center;
-    font-size: 150px;
+    font-size: 125px;
+    padding-top: 15px;
+    text-shadow: 2px 2px 5px white;
 }
 
 
@@ -66,15 +80,34 @@ button#start {
         flex-wrap: wrap;
         flex-direction: row;
         justify-content:space-evenly;
-        width: 95vw;
+        width: 375px;
         margin-top: 30px;
     }
 
     .cell {
         border: 2px solid white;
-        width: 90px;
-        height: 125px;
+        width: 125px;
+        height: 150px;
         font-size: 75px;
         margin: 0 auto;
+        padding-top: 25px;
+    }
+
+    .name-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 auto;
+        justify-content: space-around;
+    
+    }
+    #player-one, #player-two {
+        width: 175px;
+        height: 35px;
+        text-align: center;
+        color: purple;
+        font-size: 17px;
+    
     }
 }
