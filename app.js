@@ -28,6 +28,8 @@ const renderBoard = () => {
     
     gameBoardElem.classList.add('game-board');
     // return gameBoardElem;
+
+    // state.currentplayer.value ===  
     };
 
 
@@ -53,6 +55,8 @@ const makeSquareElem = (squareNumber) => {
 };
 
 const switchPlayer = () => {
+    // state.currentplayer = getPlayerIdx(0, 1);
+    // console.log(state.currentPlayer);
     if(state.currentPlayer === state.players[0]) {
         state.currentPlayer = state.players[1];
     } else {
@@ -110,7 +114,16 @@ const resetGame = () => {
     for (let square = 0; square < 9; square++) {
         gameBoardElem.appendChild(makeSquareElem(square));
     }
-    state.currentPlayer = state.players[0];
+
+
+    const getPlayerIdx = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1) + min)
+        // console.log(Math.floor(Math.random() * (max - min + 1) + min));
+    };
+    
+
+    let i = getPlayerIdx(0, 1);
+    state.currentPlayer = state.players[i];
     document.body.appendChild(gameBoardElem);
 };
 
