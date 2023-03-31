@@ -5,7 +5,6 @@ const resetState = () => {
 state.gameBoard = ['', '', '', '', '', '', '', '', ''];
 state.players = ['🛸', '👽'];
 state.currentPlayer;
-state.gameOver = false;
 state.winner = "";
 state.gameBoardElem;
 };
@@ -15,18 +14,20 @@ state.gameBoardElem;
 const startButton = document.getElementById('start-button');
 const resetButton = document.getElementById('restart');
 let bannerTwo = document.getElementById('bannerTwo');
+let gameBoardElem = document.createElement('div');
 
 
 /* Main Element */
 const renderBoard = () => {
-    resetState();
-    bannerTwo.textContent = '☆ Tic - Tac - Toe ☆';
+    while (gameBoardElem.firstChild) {
+        gameBoardElem.removeChild(gameBoardElem.firstChild);
+    };
+    // resetState();
     resetButton.style.display = "none";
     startButton.style.display = "block";
-
-    state.gameBoardElem = document.createElement('div');
-    state.gameBoardElem.classList.add('game-board');
-    return state.gameBoardElem;
+    
+    gameBoardElem.classList.add('game-board');
+    // return gameBoardElem;
     };
 
 
@@ -38,20 +39,26 @@ const makeSquareElem = (squareNumber) => {
         const { target } = event;
         target.textContent = state.currentPlayer;
         state.gameBoard[squareNumber] = state.currentPlayer;
+        
         checkBoard();
-        switchPlayer();
+        if(!state.winner) {
+          switchPlayer();  
+        }
+        
+        
     }, 
         { once:true }
     );
     return squareElem;
 };
 
-const switchPlayer = () => {git
+const switchPlayer = () => {
     if(state.currentPlayer === state.players[0]) {
         state.currentPlayer = state.players[1];
     } else {
         state.currentPlayer = state.players[0];
     }
+    bannerTwo.textContent = `${state.currentPlayer}'s Turn`;
 }
 
 const checkBoard = () => {
@@ -74,6 +81,7 @@ const checkBoard = () => {
             state.gameBoard[position1] === state.gameBoard[position2] && 
             state.gameBoard[position1] === state.gameBoard[position3]) 
             {
+            state.winner = state.gameBoard[position1];
             completeGame(`${state.gameBoard[position1]} wins!`);
         }
     }
@@ -88,24 +96,28 @@ const completeGame = (message) => {
         resetButton.style.display = "block";
         startButton.style.display = "none"
         bannerTwo.textContent = message; 
-        state.gameBoardElem.style.display = "none";
+        // gameBoardElem.style.display = "none";
         resetButton.addEventListener('click', () => {
             resetGame();
+            bannerTwo.textContent = "☆ Tic - Tac - Toe ☆"
         })
 }
 
 const resetGame = () => {
-    state.gameBoardElem = renderBoard();
+    resetState();
+    renderBoard();
 
     for (let square = 0; square < 9; square++) {
-        state.gameBoardElem.appendChild(makeSquareElem(square));
+        gameBoardElem.appendChild(makeSquareElem(square));
     }
-
     state.currentPlayer = state.players[0];
-
-
-    document.body.appendChild(state.gameBoardElem);
+    document.body.appendChild(gameBoardElem);
 };
+
+/* Event Listener */
+startButton.addEventListener('click', () => {
+    bannerTwo.textContent = `${state.currentPlayer}'s Turn`;
+});
 
 resetState();
 resetGame();
