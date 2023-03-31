@@ -1,53 +1,116 @@
-// const state = {};
+/* State */
+const state = {};
 
-/* Player Variables */
-let playerOne = document.getElementById("player-one");
-let playerTwo = document.getElementById("player-two");
-const spacePlayer = "🛸"
-const alienPlayer = "👽"
-let currentPlayer = spacePlayer;
-
-
-/* Global Variables */
-const board = document.getElementById("board");
-const header = document.querySelector("#banner");
-board.style.display = "none";
-let cells = Array.from(document.getElementsByClassName("cell"));
-let spaces = Array(9).fill(null);
-const startButton = document.getElementById("input start-button");
-const winner = [
-    /* Row */
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    /* Column */
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    /* Across */
-    [0, 4, 8],
-    [2, 4, 6]
-];
-
-/* Functions */
-    /* Starts Game */   
-function renderGame() {
-    board.style.display = "flex";
-    header.innerText = "SAFE TRAVELS!"
-    cells.forEach(cell => cell.addEventListener("click", cellClicked))
+const resetState = () => {
+state.gameBoard = ['', '', '', '', '', '', '', '', ''];
+state.players = ['🛸', '👽'];
+state.currentPlayer;
+state.gameOver = false;
+state.winner = "";
+state.gameBoardElem;
 };
 
-function cellClicked(event) {
-    const id = event.target.id;
-    if (!spaces[id]) {
-        spaces[id] = currentPlayer;
-        event.target.innerText = currentPlayer;
-        currentPlayer = currentPlayer == spacePlayer ? alienPlayer : spacePlayer;
+
+/* DOM Elements */
+const startButton = document.getElementById('start-button');
+const resetButton = document.getElementById('restart');
+let bannerTwo = document.getElementById('bannerTwo');
+
+
+/* Main Element */
+const renderBoard = () => {
+    resetState();
+    bannerTwo.textContent = '☆ Tic - Tac - Toe ☆';
+    resetButton.style.display = "none";
+    startButton.style.display = "block";
+
+    state.gameBoardElem = document.createElement('div');
+    state.gameBoardElem.classList.add('game-board');
+    return state.gameBoardElem;
+    };
+
+
+const makeSquareElem = (squareNumber) => {
+    const squareElem = document.createElement('div');
+    squareElem.classList.add('game-square');
+
+    squareElem.addEventListener('click', (event) => {
+        const { target } = event;
+        target.textContent = state.currentPlayer;
+        state.gameBoard[squareNumber] = state.currentPlayer;
+        checkBoard();
+        switchPlayer();
+    }, 
+        { once:true }
+    );
+    return squareElem;
+};
+
+const switchPlayer = () => {
+    if(state.currentPlayer === state.players[0]) {
+        state.currentPlayer = state.players[1];
+    } else {
+        state.currentPlayer = state.players[0];
     }
 }
 
+const checkBoard = () => {
+    const winningStates = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [2, 4, 6],
+        [0, 4 ,8],
+    ];
 
-/* Event Listeners */
-board.addEventListener("click", (event) => {
-    if(!event.target.classList.contains("cell")) return;
-});
+    for (let winState of winningStates) {
+        const [position1, position2, position3] = winState;
+
+        if(
+            state.gameBoard[position1] !== '' && 
+            state.gameBoard[position1] === state.gameBoard[position2] && 
+            state.gameBoard[position1] === state.gameBoard[position3]) 
+            {
+            completeGame(`${state.gameBoard[position1]} wins!`);
+        }
+    }
+
+    const allSquaresUsed = state.gameBoard.every(square => square !== '');
+    if(allSquaresUsed) {
+        alert(`No more moves!`);
+    }
+};
+
+const completeGame = (message) => {
+        resetButton.style.display = "block";
+        startButton.style.display = "none"
+        bannerTwo.textContent = message; 
+        state.gameBoardElem.style.display = "none";
+        resetButton.addEventListener('click', () => {
+            resetGame();
+        })
+}
+
+const resetGame = () => {
+    state.gameBoardElem = renderBoard();
+
+    for (let square = 0; square < 9; square++) {
+        state.gameBoardElem.appendChild(makeSquareElem(square));
+    }
+
+    state.currentPlayer = state.players[0];
+
+
+    document.body.appendChild(state.gameBoardElem);
+};
+
+resetState();
+resetGame();
+
+
+
+
+

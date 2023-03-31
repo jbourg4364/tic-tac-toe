@@ -9,33 +9,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <script defer src="app.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+   <header>
         <h1 id="banner">GALAXY</h1>
-        <h2>☆  Tic - Tac - Toe  ☆</h2>
+        <h2 id="bannerTwo">☆ Tic - Tac - Toe ☆</h2>
     </header>
-
-    <!-- User Input -->
+<!--Header-->
     <div class="name-container">
-        <input id="player-one" placeholder="Martian 1">
-        <input id="player-two" placeholder="Martian 2">
+        <input id="player-one" placeholder="Spaceship">
+        <input id="player-two" placeholder="Alien">
     </div>
-    <input id="start-button" type="button" name="Start" onclick="renderGame()" value="Start Game"/>
+    <button id="start-button">Start</button>
 
-    <!-- Board -->
-    <div id="board">
-        <div id="one" class="cell"></div>
-        <div id="two" class="cell"></div>
-        <div id="three" class="cell"></div>
-        <div id="four" class="cell"></div>
-        <div id="five" class="cell"></div>
-        <div id="six" class="cell"></div>
-        <div id="seven" class="cell"></div>
-        <div id="eight" class="cell"></div>
-        <div id="nine" class="cell"></div>
-    </div>
-<script src="app.js"></script>
+<!--Reset Footer-->
+    <button id="restart">Restart</button>
 </body>
 </html>

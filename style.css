@@ -16,7 +16,7 @@ header {
     margin-top: 10px;
 }
 
-header h1 {
+h1 {
     font-size: 50px;
     font-family: 'Russo One', sans-serif;
     letter-spacing: 20px;
@@ -32,16 +32,18 @@ header h1 {
     justify-content: space-around;
 
 }
-#player-one, #player-two {
+#player-one,#player-two{
     width: 200px;
     height: 35px;
     text-align: center;
     color: purple;
     font-size: 20px;
+    padding-left: 0;
+    
 
 }
 
-#start-button {
+button {
     width: 150px;
     font-size: 20px;
     margin-left: 50%;
@@ -52,7 +54,7 @@ header h1 {
 
 }
 
-#board {
+.game-board {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -61,36 +63,48 @@ header h1 {
     margin-top: 5px;
 }
 
-.cell {
+.game-square {
     border: 2px solid white;
     width: 200px;
-    height: 190px;
+    height: 180px;
     text-align: center;
     font-size: 125px;
-    padding-top: 15px;
+    padding-top: 10px;
     text-shadow: 2px 2px 5px white;
+}
+
+#restart {
+    display: none;
+    width: 150px;
+    font-size: 20px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    color: black;
+    height: 30px;
+    text-align: center;
 }
 
 
 
 
 @media screen and (max-width: 650px) {
-    #board {
+    .game-board {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content:space-evenly;
-        width: 375px;
+        justify-content: center;
+        width: 500px;
         margin-top: 30px;
     }
 
-    .cell {
+    .game-square {
         border: 2px solid white;
-        width: 125px;
+        width: 165px;
         height: 150px;
         font-size: 75px;
-        margin: 0 auto;
         padding-top: 25px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .name-container {
@@ -110,4 +124,21 @@ header h1 {
         font-size: 17px;
     
     }
+    h1 {
+        font-size: 50px;
+        font-family: 'Russo One', sans-serif;
+        letter-spacing: 1px;
+        text-shadow: 5px 5px 2px purple;
+    }
+    
+    .name-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 auto;
+        justify-content: space-around;
+    
+    }
+
 }
