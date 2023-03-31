@@ -89,6 +89,7 @@ const checkBoard = () => {
     const allSquaresUsed = state.gameBoard.every(square => square !== '');
     if(allSquaresUsed) {
         alert(`No more moves!`);
+        resetGame();
     }
 };
 
@@ -96,7 +97,6 @@ const completeGame = (message) => {
         resetButton.style.display = "block";
         startButton.style.display = "none"
         bannerTwo.textContent = message; 
-        // gameBoardElem.style.display = "none";
         resetButton.addEventListener('click', () => {
             resetGame();
             bannerTwo.textContent = "☆ Tic - Tac - Toe ☆"
