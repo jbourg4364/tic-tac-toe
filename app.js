@@ -46,7 +46,7 @@ const makeSquareElem = (squareNumber) => {
     return squareElem;
 };
 
-const switchPlayer = () => {
+const switchPlayer = () => {git
     if(state.currentPlayer === state.players[0]) {
         state.currentPlayer = state.players[1];
     } else {
