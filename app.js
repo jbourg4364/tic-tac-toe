@@ -46,8 +46,6 @@ const makeSquareElem = (squareNumber) => {
         if(!state.winner) {
           switchPlayer();  
         }
-        
-        
     }, 
         { once:true }
     );
@@ -63,7 +61,7 @@ const switchPlayer = () => {
         state.currentPlayer = state.players[0];
     }
     bannerTwo.textContent = `${state.currentPlayer}'s Turn`;
-}
+};
 
 const checkBoard = () => {
     const winningStates = [
@@ -105,7 +103,7 @@ const completeGame = (message) => {
             resetGame();
             bannerTwo.textContent = "☆ Tic - Tac - Toe ☆"
         })
-}
+};
 
 const resetGame = () => {
     resetState();

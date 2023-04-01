@@ -101,11 +101,12 @@ button {
     .game-square {
         border: 2px solid white;
         width: 100px;
-        height: 90px;
+        height: 130px;
         font-size: 50px;
-        padding-top: 10px;
+        padding-top: 30px;
         margin-left: 0;
         margin-right: 0;
+        text-shadow: 1px 1px 5px white;
     }
 
     .name-container {
